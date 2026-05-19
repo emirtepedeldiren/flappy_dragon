@@ -1,6 +1,6 @@
 import pygame as py
 import random
-import sys
+import os
 
 py.init()
 py.mixer.init()
@@ -14,7 +14,6 @@ font = py.font.Font("Game of Thrones.ttf", 50)
 ejderha_up = py.transform.scale(py.image.load("assets/ejderha_kanat_up.png"), (120, 90))
 ejderha_down = py.transform.scale(py.image.load("assets/ejderha_kanat_down.png"), (120, 90))
 duvar_asset = py.transform.scale(py.image.load("assets/duvar.png"), (70, 500))
-#arka_plan = py.transform.scale(py.image.load("assets/son_arka_plan.png"), (1000, 700))
 
 arka_planlar = [
     py.transform.scale(py.image.load("assets/winterfell2.png"), (1000, 700)),
@@ -44,7 +43,7 @@ while True:
     for event in py.event.get():
         if event.type == py.QUIT:
             py.quit()
-            sys.exit()
+            os._exit(0)
             
         if event.type == py.KEYDOWN:
             if event.key == py.K_SPACE and not game_over:
