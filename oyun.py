@@ -9,7 +9,7 @@ ekran = py.display.set_mode((1000, 700))
 py.display.set_caption("Flappy Dragon")
 clock = py.time.Clock()
 
-font = py.font.Font("Game of Thrones.ttf", 50)
+font = py.font.Font("got_font.ttf", 50)
 
 ejderha_up = py.transform.scale(py.image.load("assets/ejderha_kanat_up.png"), (120, 90))
 ejderha_down = py.transform.scale(py.image.load("assets/ejderha_kanat_down.png"), (120, 90))
