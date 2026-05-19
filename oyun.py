@@ -14,7 +14,17 @@ font = py.font.Font("Game of Thrones.ttf", 50)
 ejderha_up = py.transform.scale(py.image.load("assets/ejderha_kanat_up.png"), (120, 90))
 ejderha_down = py.transform.scale(py.image.load("assets/ejderha_kanat_down.png"), (120, 90))
 duvar_asset = py.transform.scale(py.image.load("assets/duvar.png"), (70, 500))
-arka_plan = py.transform.scale(py.image.load("assets/son_arka_plan.png"), (1000, 700))
+#arka_plan = py.transform.scale(py.image.load("assets/son_arka_plan.png"), (1000, 700))
+
+arka_planlar = [
+    py.transform.scale(py.image.load("assets/winterfell2.png"), (1000, 700)),
+    py.transform.scale(py.image.load("assets/kings_landing.png"), (1000, 700)),
+    py.transform.scale(py.image.load("assets/ejder_kayası.png"), (1000, 700)),
+    py.transform.scale(py.image.load("assets/dorne.png"), (1000, 700))
+
+]
+
+secili_arka_plan = random.choice(arka_planlar)
 
 hiz = 5
 yer_cekimi = 3
@@ -46,8 +56,9 @@ while True:
                 ejderha_y = 350
                 duvarlar.clear()
                 kanat_sayaci = 0
+                secili_arka_plan = random.choice(arka_planlar)
 
-    ekran.blit(arka_plan, (0, 0))
+    ekran.blit(secili_arka_plan, (0, 0))
 
     if not game_over:
         ejderha_y += yer_cekimi
