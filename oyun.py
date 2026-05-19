@@ -15,17 +15,18 @@ ejderha_up = py.transform.scale(py.image.load("assets/ejderha_kanat_up.png"), (1
 ejderha_down = py.transform.scale(py.image.load("assets/ejderha_kanat_down.png"), (120, 90))
 duvar_asset = py.transform.scale(py.image.load("assets/duvar.png"), (70, 500))
 
+winterfell_bg = py.transform.scale(py.image.load("assets/winterfell2.png"), (1000, 700))
+
 arka_planlar = [
-    py.transform.scale(py.image.load("assets/winterfell2.png"), (1000, 700)),
+    winterfell_bg,
     py.transform.scale(py.image.load("assets/kings_landing.png"), (1000, 700)),
     py.transform.scale(py.image.load("assets/ejder_kayası.png"), (1000, 700)),
     py.transform.scale(py.image.load("assets/dorne.png"), (1000, 700))
-
 ]
 
 secili_arka_plan = random.choice(arka_planlar)
 
-hiz = 5
+duvarin_hizi = 5
 yer_cekimi = 3
 bosluk_mesafesi = 275
 
@@ -69,7 +70,7 @@ while True:
         ejderha_rect = py.Rect(ejderha_x, ejderha_y, ejderha_up.get_width(), ejderha_up.get_height())
         
         for duvar in duvarlar:
-            duvar["x"] -= hiz
+            duvar["x"] -= duvarin_hizi
             
             ust_y = duvar["gap"] - 500
             alt_y = duvar["gap"] + bosluk_mesafesi
@@ -101,17 +102,21 @@ while True:
         ejderha_x = max(0, min(ejderha_x, 1000 - ejderha_up.get_width()))
 
     else:
+        
         for duvar in duvarlar:
             ust_y = duvar["gap"] - 500
             alt_y = duvar["gap"] + bosluk_mesafesi
             ekran.blit(duvar_asset, (duvar["x"], ust_y))
             ekran.blit(duvar_asset, (duvar["x"], alt_y))
 
-        game_over_text = font.render("GAME OVER", True, (138, 3, 3))
+        if secili_arka_plan == winterfell_bg:
+            game_over_text = font.render("WINTER IS COMING", True, (11, 25, 44)) 
+            ekran.blit(game_over_text, game_over_text.get_rect(center=(500, 100)))
+        else:
+            game_over_text = font.render("GAME OVER", True, (138, 3, 3))
+            ekran.blit(game_over_text, game_over_text.get_rect(center=(500, 300)))
+            
         restart_text = font.render("Press R to Restart", True, (255, 255, 255))
-        
-        ekran.blit(game_over_text, game_over_text.get_rect(center=(500, 300)))
         ekran.blit(restart_text, restart_text.get_rect(center=(500, 400)))
-
     py.display.flip()
     clock.tick(60)
