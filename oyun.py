@@ -32,8 +32,6 @@ os.makedirs(app_data_dir, exist_ok=True)
 
 DATA_FILE = os.path.join(app_data_dir, "high_score.json")
 
-
-
 duvarin_hizi = 5
 yer_cekimi = 3
 bosluk_mesafesi = 275
@@ -162,6 +160,7 @@ while True:
         ekran.blit(restart_text, restart_text.get_rect(center=(500, 400)))
     
     if game_over:
+        
         skor_y = 180 if secili_arka_plan == winterfell_bg else 130
         high_score_y = 240 if secili_arka_plan == winterfell_bg else 190
 
@@ -169,6 +168,7 @@ while True:
         skor_sayisi = skor_font.render(": " + str(skor), True, (255,255,255))
         skor_genislik = skor_yazisi.get_width() + skor_sayisi.get_width()
         skor_x = 500 - (skor_genislik // 2)
+        
         ekran.blit(skor_yazisi, skor_yazisi.get_rect(midleft=(skor_x, skor_y)))
         ekran.blit(skor_sayisi, skor_sayisi.get_rect(midleft=(skor_x + skor_yazisi.get_width(), skor_y)))
 
@@ -176,9 +176,11 @@ while True:
         high_score_sayisi = skor_font.render(": " + str(en_yuksek_skor), True, (255,255,255))
         high_score_genislik = high_score_yazisi.get_width() + high_score_sayisi.get_width()
         high_score_x = 500 - (high_score_genislik // 2)
+        
         ekran.blit(high_score_yazisi, high_score_yazisi.get_rect(midleft=(high_score_x, high_score_y)))
         ekran.blit(high_score_sayisi, high_score_sayisi.get_rect(midleft=(high_score_x + high_score_yazisi.get_width(), high_score_y)))
     else:
+        
         skor_yazisi = skor_font.render(str(skor), True, (255,255,255))
         yazi_rect = skor_yazisi.get_rect(center=(500, 50))
         ekran.blit(skor_yazisi, yazi_rect)
