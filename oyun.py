@@ -121,8 +121,27 @@ while True:
                 skor+= 1
                 duvar["gecildi"] = True
                 
-                if skor > 0 and skor % 10 == 0:
+                if skor >= 10 and skor / 10 == 1:
                     duvarin_hizi += 1
+
+                if skor >= 20 and skor / 20 == 1:
+                    bosluk_mesafesi = 260
+
+                if skor >= 30 and skor / 30 == 1:
+                    duvarin_hizi += 1
+
+                if skor >= 40 and skor / 40 == 1:
+                    bosluk_mesafesi = 245
+
+                if skor >= 50 and skor / 50 == 1:
+                    duvarin_hizi += 1
+
+                if skor >= 60 and skor / 60 == 1:
+                    bosluk_mesafesi = 230
+
+                if skor >= 70 and skor / 70 == 1:
+                    duvarin_hizi += 1
+
                 
             if duvar["x"] > -70:
                 aktif_duvarlar.append(duvar)
